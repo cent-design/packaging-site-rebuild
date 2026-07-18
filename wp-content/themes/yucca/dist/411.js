@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkzulik=self.webpackChunkzulik||[]).push([[411],{411:(e,t,s)=>{s.r(t),s.d(t,{default:()=>l});var r=s(8830),i=s(1562),u=s(857);class l extends i.A{constructor(){super()}init(){super.init(),this.initHero()}initHero(){const e=r.A.page.querySelector(".section-hero");this.title=new u.default({el:e.querySelector(".s-title"),scroll:!1})}pageLoaded(){super.pageLoaded(),this.title.tl.play()}update(){super.update()}resize(){super.resize()}destroy(){super.destroy()}}}}]);
+//# sourceMappingURL=411.js.map

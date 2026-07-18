@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkzulik=self.webpackChunkzulik||[]).push([[280],{7280:(e,s,u)=>{u.r(s),u.d(s,{default:()=>t});var r=u(1562);class t extends r.A{constructor(){super()}init(){super.init(),this.initComponent("PageNav")}pageLoaded(){super.pageLoaded()}update(){super.update()}resize(){super.resize()}destroy(){super.destroy()}}}}]);
+//# sourceMappingURL=280.js.map

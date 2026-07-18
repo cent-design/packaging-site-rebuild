@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkzulik=self.webpackChunkzulik||[]).push([[346],{3346:(e,s,t)=>{t.r(s),t.d(s,{default:()=>i});var r=t(8830),a=t(1562);class i extends a.A{constructor(){super()}async init(){super.init();const e=await this.initComponent("SolutionHero",{el:r.A.page.querySelector(".s-solution-hero-wrapper")});await e.ready,this.resolveReady(),this.initComponent("Map",{el:r.A.page.querySelector(".section-map")})}pageLoaded(){super.pageLoaded()}update(){super.update()}resize(){super.resize()}destroy(){super.destroy()}}}}]);
+//# sourceMappingURL=346.js.map

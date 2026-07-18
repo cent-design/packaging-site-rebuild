@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkzulik=self.webpackChunkzulik||[]).push([[914],{8914:(e,s,r)=>{r.r(s),r.d(s,{default:()=>u});var t=r(8830),a=r(1562);class u extends a.A{constructor(){super()}async init(){super.init();const e=await this.initComponent("SolutionHero",{el:t.A.page.querySelector(".s-solution-hero-wrapper")});await e.ready,this.resolveReady()}pageLoaded(){super.pageLoaded()}update(){super.update()}resize(){super.resize()}destroy(){super.destroy()}}}}]);
+//# sourceMappingURL=914.js.map
