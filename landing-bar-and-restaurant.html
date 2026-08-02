@@ -95,6 +95,10 @@
         /* Order-request / contact forms */
         .lp-form-section{padding:6rem 4rem}
         .lp-form-section .s-content{margin-bottom:3.2rem;max-width:64rem}
+        .lp-contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4.8rem;max-width:136rem;margin:0 auto;align-items:start}
+        @media(max-width: 1099px){.lp-contact-grid{grid-template-columns:1fr}}
+        .lp-contact-intro h2.s-title{font-size:3.6rem;line-height:125%;margin-bottom:1.6rem}
+        .lp-contact-intro .s-text{font-size:1.6rem;line-height:160%;color:var(--c-charcoal);margin-bottom:2.4rem}
         .lp-form{display:flex;flex-direction:column;gap:1.6rem;max-width:64rem}
         .lp-form-row{display:flex;gap:1.6rem;flex-wrap:wrap}
         .lp-form-field{flex:1 1 20rem;display:flex;flex-direction:column;gap:.6rem}
@@ -274,10 +278,10 @@
     <div class="s-content">
         <span class="s-overline">Custom Solutions</span>
         <h2>Brands that thrive invest in custom-designed packaging. Let us help bring your vision to life.</h2>
-        <a aria-label="Enquire now" href="#contact-form" class="btn btn-light btn-s"><span class="btn-fill"></span><span class="btn-text-wrapper"><span class="btn-text">Enquire Now</span><span class="btn-text-hover">Enquire Now</span></span></a>
+        <a aria-label="Inquire now" href="#contact-form" class="btn btn-light btn-s"><span class="btn-fill"></span><span class="btn-text-wrapper"><span class="btn-text">Inquire Now</span><span class="btn-text-hover">Inquire Now</span></span></a>
     </div>
 
-    <a href="#contact-form" aria-label="Enquire now" class="lp-marquee-link">
+    <a href="#contact-form" aria-label="Inquire now" class="lp-marquee-link">
         <div class="lp-marquee">
             <div class="lp-marquee-track">
                 <span class="lp-marquee-item">Not sure what&rsquo;s possible? Get in touch to find out.<svg width="40" height="40" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M57.2318 20.2935C57.9245 19.8361 58.8666 19.9137 59.4764 20.5236C60.0863 21.1334 60.1639 22.0755 59.7065 22.7682L59.4764 23.047L22.5235 60L20 57.4765L56.953 20.5236L57.2318 20.2935Z" fill="white"/><path d="M56.4295 23.5691H20.7383V20H59.9986V59.2603H56.4295V23.5691Z" fill="white"/></svg></span>
@@ -412,58 +416,52 @@
 </section>
 
 <section class="lp-form-section lp-contact" id="contact-form">
-    <div class="s-content">
-        <h2 class="s-title">Get in touch</h2>
-        <div class="s-text"><p>Have a question, a bulk order, or a custom packaging project in mind? Send us a message and our team will respond shortly.</p></div>
-    </div>
-
-    <form class="lp-form" id="contact-us-form">
-        <div class="lp-form-row">
-            <div class="lp-form-field">
-                <label for="contact-first-name">First Name*</label>
-                <input type="text" id="contact-first-name" name="first-name" required />
-            </div>
-            <div class="lp-form-field">
-                <label for="contact-last-name">Last Name*</label>
-                <input type="text" id="contact-last-name" name="last-name" required />
-            </div>
-        </div>
-        <div class="lp-form-row">
-            <div class="lp-form-field">
-                <label for="contact-email">Email*</label>
-                <input type="email" id="contact-email" name="email" required />
-            </div>
-            <div class="lp-form-field">
-                <label for="contact-number">Contact Number</label>
-                <input type="tel" id="contact-number" name="number" />
-            </div>
-        </div>
-        <div class="lp-form-field">
-            <label for="contact-industry">Business Type</label>
-            <select id="contact-industry" name="industry">
-                <option value="Pizzeria / Italian Eatery" selected>Pizzeria / Italian Eatery</option>
-                <option value="Bakery / Dessert Shop">Bakery / Dessert Shop</option>
-                <option value="Caterer / Grazing Business">Caterer / Grazing Business</option>
-                <option value="Food Truck / Pop-Up">Food Truck / Pop-Up</option>
-                <option value="Corporate / Event Packaging">Corporate / Event Packaging</option>
-                <option value="Other">Other</option>
-            </select>
-        </div>
-        <div class="lp-form-field">
-            <label for="contact-message">Message*</label>
-            <textarea id="contact-message" name="message" required placeholder="Tell us what you're looking for"></textarea>
-        </div>
-        <button type="submit" aria-label="Submit enquiry" class="btn btn-primary btn-m lp-form-submit"><span class="btn-fill"></span><span class="btn-text-wrapper"><span class="btn-text">Submit Enquiry</span><span class="btn-text-hover">Submit Enquiry</span></span></button>
-        <p class="lp-form-response" role="status">Thanks for reaching out &mdash; we&rsquo;ve received your message and will get back to you shortly.</p>
-    </form>
-</section>
-
-<section class="section section-post-cta">
-    <div class="s-inner">
-        <div class="s-content">
+    <div class="lp-contact-grid">
+        <div class="lp-contact-intro">
             <h2 class="s-title">Ready to brand your pizza boxes in Miami?</h2>
+            <p class="s-text">Have a question, a bulk order, or a custom packaging project in mind? Send us a message and our team will respond shortly.</p>
             <a aria-label="Request a quote" href="#order-request-form" class="btn btn-primary btn-s"><span class="btn-fill"></span><span class="btn-text-wrapper"><span class="btn-text">Request a Quote</span><span class="btn-text-hover">Request a Quote</span></span></a>
         </div>
+
+        <form class="lp-form" id="contact-us-form">
+            <div class="lp-form-row">
+                <div class="lp-form-field">
+                    <label for="contact-first-name">First Name*</label>
+                    <input type="text" id="contact-first-name" name="first-name" required />
+                </div>
+                <div class="lp-form-field">
+                    <label for="contact-last-name">Last Name*</label>
+                    <input type="text" id="contact-last-name" name="last-name" required />
+                </div>
+            </div>
+            <div class="lp-form-row">
+                <div class="lp-form-field">
+                    <label for="contact-email">Email*</label>
+                    <input type="email" id="contact-email" name="email" required />
+                </div>
+                <div class="lp-form-field">
+                    <label for="contact-number">Contact Number</label>
+                    <input type="tel" id="contact-number" name="number" />
+                </div>
+            </div>
+            <div class="lp-form-field">
+                <label for="contact-industry">Business Type</label>
+                <select id="contact-industry" name="industry">
+                    <option value="Pizzeria / Italian Eatery" selected>Pizzeria / Italian Eatery</option>
+                    <option value="Bakery / Dessert Shop">Bakery / Dessert Shop</option>
+                    <option value="Caterer / Grazing Business">Caterer / Grazing Business</option>
+                    <option value="Food Truck / Pop-Up">Food Truck / Pop-Up</option>
+                    <option value="Corporate / Event Packaging">Corporate / Event Packaging</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="lp-form-field">
+                <label for="contact-message">Message*</label>
+                <textarea id="contact-message" name="message" required placeholder="Tell us what you're looking for"></textarea>
+            </div>
+            <button type="submit" aria-label="Submit inquiry" class="btn btn-primary btn-m lp-form-submit"><span class="btn-fill"></span><span class="btn-text-wrapper"><span class="btn-text">Submit Inquiry</span><span class="btn-text-hover">Submit Inquiry</span></span></button>
+            <p class="lp-form-response" role="status">Thanks for reaching out &mdash; we&rsquo;ve received your message and will get back to you shortly.</p>
+        </form>
     </div>
 </section>
 
