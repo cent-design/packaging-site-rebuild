@@ -16,7 +16,7 @@
     <meta name="description" content="Custom branded 12&quot;x12&quot;x2.25&quot; kraft pizza boxes with 1-colour or 3-colour printing, serving pizzerias, bakeries and caterers across Miami and South Florida. Grease-resistant, FSC-certified &amp; recyclable." />
     <meta property="og:title" content="Custom Branded Kraft Pizza Boxes in Miami &amp; South Florida | Takeout Goods Packaging" />
     <meta property="og:description" content="Custom branded 12&quot;x12&quot;x2.25&quot; kraft pizza boxes with 1-colour or 3-colour printing, serving pizzerias, bakeries and caterers across Miami and South Florida. Grease-resistant, FSC-certified &amp; recyclable." />
-    <meta property="og:image" content="/wp-content/uploads/2025/09/Frame-427320111.png" />
+    <meta property="og:image" content="wp-content/uploads/2026/04/MY01PIBKK12-1200x1200.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -122,6 +122,88 @@ html.lp-skip-intro #lp_pizza_box_miami .lp-intro{display:none !important;}
 </style>
 </head>
 <body class="page landing-page" id="lp_pizza_box_miami">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Product",
+      "name": "Kraft Pizza Box",
+      "image": "https://cent-design.github.io/packaging-site-rebuild/wp-content/uploads/2026/04/MY01PIBKK12-1200x1200.jpg",
+      "description": "Custom branded 12\" x 12\" x 2.25\" kraft pizza box with 1-colour or 3-colour printing, sold in cases of 50.",
+      "brand": { "@type": "Brand", "name": "Takeout Goods" },
+      "sku": "MY01PIBKK12",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://cent-design.github.io/packaging-site-rebuild/landing-bar-and-restaurant.html",
+        "priceCurrency": "USD",
+        "price": "32.99",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "Service",
+      "serviceType": "Custom Kraft Pizza Box Printing & Supply",
+      "provider": { "@type": "Organization", "name": "Takeout Goods" },
+      "areaServed": [
+        { "@type": "City", "name": "Miami" },
+        { "@type": "City", "name": "Fort Lauderdale" },
+        { "@type": "City", "name": "West Palm Beach" }
+      ],
+      "audience": {
+        "@type": "BusinessAudience",
+        "audienceType": "Pizzerias, bakeries, caterers and food trucks"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do you deliver to Miami and South Florida?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We serve pizzerias, bakeries, caterers and food trucks across Miami-Dade, Broward and Palm Beach counties. Get in touch with your order details and we'll confirm delivery timelines."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What custom branding options are available?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our kraft pizza boxes are available with 1-colour or 3-colour custom branded printing. Upload your logo through the order form and our team will follow up with your print options and a quote."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I order in bulk?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We offer tiered bulk pricing – the more you order, the lower your unit cost. Share your estimated monthly volume in the order form and we'll put together pricing for your business."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What else can this box be used for besides pizza?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Its 12\" x 12\" x 2.25\" footprint works well beyond pizza – think personal pies, flatbreads, giant cookies, dessert platters, charcuterie boards, pastry spreads and retail gift packaging."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does production and delivery take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Lead times depend on order size and whether custom printing is required. Once you submit an order request, your account manager will confirm production time and delivery to your Miami or South Florida location."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 
 <div class="lp-intro">
     <div class="lp-intro-logo">
@@ -437,8 +519,8 @@ html.lp-skip-intro #lp_pizza_box_miami .lp-intro{display:none !important;}
 <section class="lp-form-section lp-contact" id="contact-form">
     <div class="lp-contact-grid">
         <div class="lp-contact-intro">
-            <h2 class="s-title">Ready to brand your pizza boxes in Miami?</h2>
-            <p class="s-text">Have a question, a bulk order, or a custom packaging project in mind? Send us a message and our team will respond shortly.</p>
+            <h2 class="s-title">Need Something More?</h2>
+            <p class="s-text">Whether it's a question, a custom project, or something outside our standard sizes &mdash; send us a message and our team will get back to you shortly.</p>
         </div>
 
         <form class="lp-form" id="contact-us-form">
@@ -531,6 +613,7 @@ html.lp-skip-intro #lp_pizza_box_miami .lp-intro{display:none !important;}
     // Klaviyo Client API — public key is meant to be exposed in browser JS
     var KLAVIYO_COMPANY_ID = 'Vxn9Fp';
     var KLAVIYO_LIST_ID = 'SNujFM';
+    var KLAVIYO_GENERAL_LIST_ID = 'TiKRxV';
     var KLAVIYO_REVISION = '2026-07-15';
     var KLAVIYO_BASE = 'https://a.klaviyo.com/client';
 
@@ -545,7 +628,7 @@ html.lp-skip-intro #lp_pizza_box_miami .lp-intro{display:none !important;}
         });
     }
 
-    function subscribeProfile(profileAttributes, source) {
+    function subscribeProfile(profileAttributes, source, listId) {
         return klaviyoFetch('/subscriptions', {
             data: {
                 type: 'subscription',
@@ -561,7 +644,7 @@ html.lp-skip-intro #lp_pizza_box_miami .lp-intro{display:none !important;}
                     }
                 },
                 relationships: {
-                    list: { data: { type: 'list', id: KLAVIYO_LIST_ID } }
+                    list: { data: { type: 'list', id: listId } }
                 }
             }
         });
@@ -603,7 +686,7 @@ html.lp-skip-intro #lp_pizza_box_miami .lp-intro{display:none !important;}
                     email: email,
                     first_name: name,
                     properties: { business_name: company }
-                }, 'Pizza Box Landing Page - Order Request'),
+                }, 'Pizza Box Landing Page - Order Request', KLAVIYO_LIST_ID),
                 trackEvent(email, 'Requested Quote', {
                     name: name,
                     business_name: company,
@@ -647,7 +730,7 @@ html.lp-skip-intro #lp_pizza_box_miami .lp-intro{display:none !important;}
             }
 
             var requests = [
-                subscribeProfile(profileAttributes, 'Pizza Box Landing Page - Contact Form'),
+                subscribeProfile(profileAttributes, 'Pizza Box Landing Page - Contact Form', KLAVIYO_GENERAL_LIST_ID),
                 trackEvent(email, 'Contact Form Submission', {
                     first_name: firstName,
                     last_name: lastName,
