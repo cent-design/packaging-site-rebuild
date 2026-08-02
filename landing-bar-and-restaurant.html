@@ -36,16 +36,12 @@
 #lp_pizza_box_miami .accordion-body{display:none !important;}
 #lp_pizza_box_miami .accordion.is-open .accordion-body{display:block !important;}
 #lp_pizza_box_miami img{max-width:100% !important;height:auto !important;}
-#lp_pizza_box_miami .lp-intro{position:fixed !important;inset:0 !important;z-index:999 !important;background:#BF5700 !important;display:flex !important;align-items:center !important;justify-content:center !important;animation:lpIntroOut .7s ease-in-out 1.7s forwards !important;}
+#lp_pizza_box_miami .lp-intro{position:fixed !important;inset:0 !important;z-index:999 !important;background:#BF5700 !important;display:flex !important;align-items:center !important;justify-content:center !important;opacity:1;}
 #lp_pizza_box_miami .lp-intro-logo{display:flex !important;align-items:center !important;gap:1.4rem !important;}
-#lp_pizza_box_miami .lp-intro-logo svg{width:6rem !important;height:6rem !important;opacity:0 !important;transform:scale(.5) !important;animation:lpIntroIcon .6s cubic-bezier(.34,1.56,.64,1) .2s forwards !important;}
-#lp_pizza_box_miami .lp-intro-text{opacity:0 !important;transform:translateY(1.2rem) !important;animation:lpIntroText .5s ease-out .55s forwards !important;}
+#lp_pizza_box_miami .lp-intro-logo svg{width:6rem !important;height:6rem !important;opacity:0;transform:scale(.5);}
+#lp_pizza_box_miami .lp-intro-text{opacity:0;transform:translateY(1.2rem);}
 #lp_pizza_box_miami .lp-intro-text span{display:block !important;font-size:2.2rem !important;font-weight:600 !important;letter-spacing:.08em !important;color:#fff !important;text-transform:uppercase !important;line-height:1.3 !important;}
-@keyframes lpIntroIcon{to{opacity:1 !important;transform:scale(1) !important;}}
-@keyframes lpIntroText{to{opacity:1 !important;transform:translateY(0) !important;}}
-@keyframes lpIntroOut{to{opacity:0 !important;visibility:hidden !important;pointer-events:none !important;}}
 html.lp-skip-intro #lp_pizza_box_miami .lp-intro{display:none !important;}
-@media(prefers-reduced-motion: reduce){#lp_pizza_box_miami .lp-intro{animation:lpIntroOut .01s linear .01s forwards !important;}#lp_pizza_box_miami .lp-intro-logo svg,#lp_pizza_box_miami .lp-intro-text{animation:none !important;opacity:1 !important;transform:none !important;}}
 #lp_pizza_box_miami .lp-product{display:grid !important;grid-template-columns:1fr 1fr !important;gap:4.8rem !important;max-width:136rem !important;margin:0 auto !important;padding:6rem 4rem !important;align-items:start !important;}
 #lp_pizza_box_miami .lp-product-media{position:sticky !important;top:9.6rem !important;align-self:start !important;aspect-ratio:1/1 !important;border-radius:1.6rem !important;overflow:hidden !important;background:var(--c-almond) !important;}
 #lp_pizza_box_miami .lp-product-media img{width:100% !important;height:100% !important;object-fit:cover !important;display:block !important;}
@@ -274,7 +270,7 @@ html.lp-skip-intro #lp_pizza_box_miami .lp-intro{display:none !important;}
                     <span class="lp-spec-value">Custom quote</span>
                 </div>
             </div>
-            <p class="lp-spec-note">Sold in cases of 50 boxes &middot; MOQ 284 cases (14,200 boxes)</p>
+            <p class="lp-spec-note" style="line-height:150% !important;margin:0 !important;">Sold in cases of 50 boxes &middot; MOQ 284 cases (14,200 boxes)</p>
         </div>
 
         <form class="lp-form" id="order-request-form">
@@ -313,7 +309,7 @@ html.lp-skip-intro #lp_pizza_box_miami .lp-intro{display:none !important;}
             <p class="lp-form-response" role="status">Thanks &mdash; your order request has been received. Our team will be in touch shortly to confirm details.</p>
         </form>
 
-        <p class="lp-delivery-note">Serving Miami-Dade, Broward and Palm Beach counties &middot; Fast, reliable turnaround.</p>
+        <p class="lp-delivery-note" style="line-height:150% !important;margin:2.4rem 0 0 0 !important;">Serving Miami-Dade, Broward and Palm Beach counties &middot; Fast, reliable turnaround.</p>
     </div>
 </section>
 
@@ -324,23 +320,23 @@ html.lp-skip-intro #lp_pizza_box_miami .lp-intro{display:none !important;}
     <div class="lp-segments-grid">
         <div class="lp-segment">
             <span class="lp-segment-title">Pizzerias &amp; Italian Eateries</span>
-            <p class="lp-segment-text">Ideal for personal pizzas, gluten-free pies, and small-to-medium takeaways.</p>
+            <p class="lp-segment-text" style="line-height:150% !important;margin:0 !important;">Ideal for personal pizzas, gluten-free pies, and small-to-medium takeaways.</p>
         </div>
         <div class="lp-segment">
             <span class="lp-segment-title">Bakeries &amp; Dessert Shops</span>
-            <p class="lp-segment-text">Fits large cookie spreads, custom pies, cinnamon roll dozen-packs, and flat pastry platters.</p>
+            <p class="lp-segment-text" style="line-height:150% !important;margin:0 !important;">Fits large cookie spreads, custom pies, cinnamon roll dozen-packs, and flat pastry platters.</p>
         </div>
         <div class="lp-segment">
             <span class="lp-segment-title">Caterers &amp; Grazing Businesses</span>
-            <p class="lp-segment-text">Great for mini-charcuterie displays, event lunch spreads, and party favours.</p>
+            <p class="lp-segment-text" style="line-height:150% !important;margin:0 !important;">Great for mini-charcuterie displays, event lunch spreads, and party favours.</p>
         </div>
         <div class="lp-segment">
             <span class="lp-segment-title">Food Trucks &amp; Pop-Ups</span>
-            <p class="lp-segment-text">Lightweight, stackable, and easy to assemble on the fly.</p>
+            <p class="lp-segment-text" style="line-height:150% !important;margin:0 !important;">Lightweight, stackable, and easy to assemble on the fly.</p>
         </div>
         <div class="lp-segment">
             <span class="lp-segment-title">Corporate &amp; Event Packaging</span>
-            <p class="lp-segment-text">Brand your swag bags, merch kits, or branded giveaway items in an eco-friendly kraft box.</p>
+            <p class="lp-segment-text" style="line-height:150% !important;margin:0 !important;">Brand your swag bags, merch kits, or branded giveaway items in an eco-friendly kraft box.</p>
         </div>
     </div>
 </section>
@@ -384,7 +380,7 @@ html.lp-skip-intro #lp_pizza_box_miami .lp-intro{display:none !important;}
 <section class="lp-cta-custom">
     <div class="s-content">
         <span class="s-overline">Custom Solutions</span>
-        <h2>Brands that thrive invest in custom-designed packaging. Let us help bring your vision to life.</h2>
+        <h2 style="line-height:130% !important;">Brands that thrive invest in custom-designed packaging. Let us help bring your vision to life.</h2>
         <a aria-label="Inquire now" href="https://calendar.app.google/P4EGxx5SYkn72LxB7" target="_blank" rel="noopener" class="btn btn-light btn-s"><span class="btn-fill"></span><span class="btn-text-wrapper"><span class="btn-text">Inquire Now</span><span class="btn-text-hover">Inquire Now</span></span></a>
     </div>
 
@@ -436,11 +432,11 @@ html.lp-skip-intro #lp_pizza_box_miami .lp-intro{display:none !important;}
         </div>
 
         <div class="s-steps">
-            <div class="s-step"><p class="s-step-text">Discovery call</p></div>
-            <div class="s-step"><p class="s-step-text">Quotation</p></div>
-            <div class="s-step"><p class="s-step-text">Design and approval</p></div>
-            <div class="s-step"><p class="s-step-text">Sample production and review</p></div>
-            <div class="s-step"><p class="s-step-text">Order confirmation and management</p></div>
+            <div class="s-step"><p class="s-step-text" style="line-height:140% !important;margin:0 !important;">Discovery call</p></div>
+            <div class="s-step"><p class="s-step-text" style="line-height:140% !important;margin:0 !important;">Quotation</p></div>
+            <div class="s-step"><p class="s-step-text" style="line-height:140% !important;margin:0 !important;">Design and approval</p></div>
+            <div class="s-step"><p class="s-step-text" style="line-height:140% !important;margin:0 !important;">Sample production and review</p></div>
+            <div class="s-step"><p class="s-step-text" style="line-height:140% !important;margin:0 !important;">Order confirmation and management</p></div>
         </div>
     </div>
 </section>
@@ -475,7 +471,7 @@ html.lp-skip-intro #lp_pizza_box_miami .lp-intro{display:none !important;}
             <div class="accordion">
                 <div class="accordion-border"></div>
                 <div class="accordion-header">
-                    <h6 class="accordion-title">Do you deliver to Miami and South Florida?</h6>
+                    <h6 class="accordion-title" style="line-height:140% !important;">Do you deliver to Miami and South Florida?</h6>
                     <span class="accordion-toggle"><span class="accordion-toggle-line line-1"></span><span class="accordion-toggle-line line-2"></span></span>
                 </div>
                 <div class="accordion-body"><div class="accordion-text"><p style="line-height:160% !important;margin:0 !important;">Yes. We serve pizzerias, bakeries, caterers and food trucks across Miami-Dade, Broward and Palm Beach counties. Get in touch with your order details and we&#8217;ll confirm delivery timelines.</p></div></div>
@@ -483,7 +479,7 @@ html.lp-skip-intro #lp_pizza_box_miami .lp-intro{display:none !important;}
             <div class="accordion">
                 <div class="accordion-border"></div>
                 <div class="accordion-header">
-                    <h6 class="accordion-title">What custom branding options are available?</h6>
+                    <h6 class="accordion-title" style="line-height:140% !important;">What custom branding options are available?</h6>
                     <span class="accordion-toggle"><span class="accordion-toggle-line line-1"></span><span class="accordion-toggle-line line-2"></span></span>
                 </div>
                 <div class="accordion-body"><div class="accordion-text"><p style="line-height:160% !important;margin:0 !important;">Our kraft pizza boxes are available with 1-colour or 3-colour custom branded printing. Upload your logo through the order form above and our team will follow up with your print options and a quote.</p></div></div>
@@ -491,7 +487,7 @@ html.lp-skip-intro #lp_pizza_box_miami .lp-intro{display:none !important;}
             <div class="accordion">
                 <div class="accordion-border"></div>
                 <div class="accordion-header">
-                    <h6 class="accordion-title">Can I order in bulk?</h6>
+                    <h6 class="accordion-title" style="line-height:140% !important;">Can I order in bulk?</h6>
                     <span class="accordion-toggle"><span class="accordion-toggle-line line-1"></span><span class="accordion-toggle-line line-2"></span></span>
                 </div>
                 <div class="accordion-body"><div class="accordion-text"><p style="line-height:160% !important;margin:0 !important;">Yes. We offer tiered bulk pricing &#8211; the more you order, the lower your unit cost. Share your estimated monthly volume in the order form and we&#8217;ll put together pricing for your business.</p></div></div>
@@ -499,7 +495,7 @@ html.lp-skip-intro #lp_pizza_box_miami .lp-intro{display:none !important;}
             <div class="accordion">
                 <div class="accordion-border"></div>
                 <div class="accordion-header">
-                    <h6 class="accordion-title">What else can this box be used for besides pizza?</h6>
+                    <h6 class="accordion-title" style="line-height:140% !important;">What else can this box be used for besides pizza?</h6>
                     <span class="accordion-toggle"><span class="accordion-toggle-line line-1"></span><span class="accordion-toggle-line line-2"></span></span>
                 </div>
                 <div class="accordion-body"><div class="accordion-text"><p style="line-height:160% !important;margin:0 !important;">Its 12&quot; x 12&quot; x 2.25&quot; footprint works well beyond pizza &#8211; think personal pies, flatbreads, giant cookies, dessert platters, charcuterie boards, pastry spreads and retail gift packaging.</p></div></div>
@@ -507,7 +503,7 @@ html.lp-skip-intro #lp_pizza_box_miami .lp-intro{display:none !important;}
             <div class="accordion">
                 <div class="accordion-border"></div>
                 <div class="accordion-header">
-                    <h6 class="accordion-title">How long does production and delivery take?</h6>
+                    <h6 class="accordion-title" style="line-height:140% !important;">How long does production and delivery take?</h6>
                     <span class="accordion-toggle"><span class="accordion-toggle-line line-1"></span><span class="accordion-toggle-line line-2"></span></span>
                 </div>
                 <div class="accordion-body"><div class="accordion-text"><p style="line-height:160% !important;margin:0 !important;">Lead times depend on order size and whether custom printing is required. Once you submit an order request, your account manager will confirm production time and delivery to your Miami or South Florida location.</p></div></div>
@@ -519,8 +515,8 @@ html.lp-skip-intro #lp_pizza_box_miami .lp-intro{display:none !important;}
 <section class="lp-form-section lp-contact" id="contact-form">
     <div class="lp-contact-grid">
         <div class="lp-contact-intro">
-            <h2 class="s-title">Need Something More?</h2>
-            <p class="s-text">Whether it's a question, a custom project, or something outside our standard sizes &mdash; send us a message and our team will get back to you shortly.</p>
+            <h2 class="s-title" style="line-height:125% !important;margin-bottom:1.6rem !important;">Need Something More?</h2>
+            <p class="s-text" style="line-height:160% !important;margin:0 0 2.4rem 0 !important;">Whether it's a question, a custom project, or something outside our standard sizes &mdash; send us a message and our team will get back to you shortly.</p>
         </div>
 
         <form class="lp-form" id="contact-us-form">
@@ -580,6 +576,48 @@ html.lp-skip-intro #lp_pizza_box_miami .lp-intro{display:none !important;}
 <script>
 (function () {
     var scope = document.getElementById('lp_pizza_box_miami') || document;
+
+    // Intro overlay — JS-driven rather than a CSS @keyframes animation, since
+    // third-party page builders can silently strip @keyframes from custom CSS
+    // (same issue the marquee had). Skips instantly on repeat visits/reduced motion.
+    var introEl = scope.querySelector('.lp-intro');
+    if (introEl) {
+        if (document.documentElement.classList.contains('lp-skip-intro')) {
+            introEl.style.display = 'none';
+        } else if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            introEl.style.display = 'none';
+        } else {
+            var introLogo = introEl.querySelector('.lp-intro-logo svg');
+            var introText = introEl.querySelector('.lp-intro-text');
+            if (introLogo) {
+                introLogo.style.transition = 'opacity .6s cubic-bezier(.34,1.56,.64,1), transform .6s cubic-bezier(.34,1.56,.64,1)';
+            }
+            if (introText) {
+                introText.style.transition = 'opacity .5s ease-out, transform .5s ease-out';
+            }
+            introEl.style.transition = 'opacity .7s ease-in-out';
+
+            setTimeout(function () {
+                if (introLogo) {
+                    introLogo.style.opacity = '1';
+                    introLogo.style.transform = 'scale(1)';
+                }
+            }, 200);
+            setTimeout(function () {
+                if (introText) {
+                    introText.style.opacity = '1';
+                    introText.style.transform = 'translateY(0)';
+                }
+            }, 550);
+            setTimeout(function () {
+                introEl.style.opacity = '0';
+                introEl.style.pointerEvents = 'none';
+                setTimeout(function () {
+                    introEl.style.visibility = 'hidden';
+                }, 700);
+            }, 1700);
+        }
+    }
 
     scope.querySelectorAll('.accordion-header').forEach(function (header) {
         header.addEventListener('click', function () {
