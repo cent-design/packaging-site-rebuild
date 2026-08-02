@@ -91,12 +91,10 @@ html.lp-skip-intro #lp_pizza_box_miami .lp-intro{display:none !important;}
 #lp_pizza_box_miami .lp-cta-custom h2{font-size:3.6rem !important;line-height:130% !important;max-width:64rem !important;margin:0 auto 3.2rem !important;color:#fff !important;}
 #lp_pizza_box_miami .lp-marquee-link{display:block !important;margin-top:5.6rem !important;text-decoration:none !important;}
 #lp_pizza_box_miami .lp-marquee{overflow:hidden !important;white-space:nowrap !important;border-top:1px solid rgba(255,255,255,.35) !important;border-bottom:1px solid rgba(255,255,255,.35) !important;padding:2.4rem 0 !important;}
-#lp_pizza_box_miami .lp-marquee-track{display:inline-flex !important;width:max-content !important;animation:lpMarqueeScroll 22s linear infinite !important;}
+#lp_pizza_box_miami .lp-marquee-track{display:inline-flex !important;width:max-content !important;will-change:transform !important;}
 #lp_pizza_box_miami .lp-marquee-item{display:inline-flex !important;align-items:center !important;gap:2rem !important;padding:0 2rem !important;font-size:3.2rem !important;color:#fff !important;flex-shrink:0 !important;}
 #lp_pizza_box_miami .lp-marquee-item svg{flex-shrink:0 !important;}
-@keyframes lpMarqueeScroll{from{transform:translateX(0) !important;}to{transform:translateX(-50%) !important;}}
 @media(max-width: 1099px){#lp_pizza_box_miami .lp-marquee-item{font-size:2rem !important;}}
-@media(prefers-reduced-motion: reduce){#lp_pizza_box_miami .lp-marquee-track{animation:none !important;}}
 #lp_pizza_box_miami .lp-form-section{padding:6rem 4rem !important;}
 #lp_pizza_box_miami .lp-form-section .s-content{margin-bottom:3.2rem !important;max-width:64rem !important;}
 #lp_pizza_box_miami .lp-contact-grid{display:grid !important;grid-template-columns:1fr 1fr !important;gap:4.8rem !important;max-width:136rem !important;margin:0 auto !important;align-items:center !important;}
@@ -115,6 +113,11 @@ html.lp-skip-intro #lp_pizza_box_miami .lp-intro{display:none !important;}
 #lp_pizza_box_miami .lp-form-response{display:none !important;margin-top:1.6rem !important;padding:1.4rem 2rem !important;border-radius:.8rem !important;background:var(--c-oat) !important;color:var(--c-charcoal) !important;font-size:1.4rem !important;}
 #lp_pizza_box_miami .lp-form-response.is-visible{display:block !important;}
 #lp_pizza_box_miami .lp-contact{background:var(--c-porcelain) !important;}
+#lp_pizza_box_miami .s-text{line-height:160% !important;}
+#lp_pizza_box_miami .s-text p{line-height:160% !important;margin:0 !important;}
+#lp_pizza_box_miami .s-block-content .s-title{line-height:125% !important;margin-bottom:1.2rem !important;}
+#lp_pizza_box_miami p{line-height:160% !important;}
+#lp_pizza_box_miami h1,#lp_pizza_box_miami h2,#lp_pizza_box_miami h3,#lp_pizza_box_miami h4,#lp_pizza_box_miami h5,#lp_pizza_box_miami h6{line-height:125% !important;}
 </style>
 </head>
 <body class="page landing-page" id="lp_pizza_box_miami">
@@ -506,6 +509,29 @@ html.lp-skip-intro #lp_pizza_box_miami .lp-intro{display:none !important;}
             header.closest('.accordion').classList.toggle('is-open');
         });
     });
+
+    // Marquee ticker — JS-driven rather than a CSS @keyframes animation, since
+    // third-party page builders can silently strip @keyframes from custom CSS.
+    var marqueeTrack = scope.querySelector('.lp-marquee-track');
+    if (marqueeTrack && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        var marqueePos = 0;
+        var marqueeSpeed = 0.6; // px per frame, roughly matches the old 22s CSS loop
+        var marqueeHalfWidth = 0;
+        function recalcMarqueeWidth() {
+            marqueeHalfWidth = marqueeTrack.scrollWidth / 2;
+        }
+        recalcMarqueeWidth();
+        window.addEventListener('resize', recalcMarqueeWidth);
+        function stepMarquee() {
+            marqueePos -= marqueeSpeed;
+            if (marqueeHalfWidth && Math.abs(marqueePos) >= marqueeHalfWidth) {
+                marqueePos = 0;
+            }
+            marqueeTrack.style.transform = 'translateX(' + marqueePos + 'px)';
+            requestAnimationFrame(stepMarquee);
+        }
+        requestAnimationFrame(stepMarquee);
+    }
 
     // Klaviyo Client API — public key is meant to be exposed in browser JS
     var KLAVIYO_COMPANY_ID = 'Vxn9Fp';
