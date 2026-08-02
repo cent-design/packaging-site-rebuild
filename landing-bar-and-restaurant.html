@@ -496,22 +496,25 @@ html.lp-skip-intro #lp_pizza_box_miami .lp-intro{display:none !important;}
 </footer>
 
 <script>
-document.querySelectorAll('.accordion-header').forEach(function (header) {
-    header.addEventListener('click', function () {
-        header.closest('.accordion').classList.toggle('is-open');
+(function () {
+    var scope = document.getElementById('lp_pizza_box_miami') || document;
+    scope.querySelectorAll('.accordion-header').forEach(function (header) {
+        header.addEventListener('click', function () {
+            header.closest('.accordion').classList.toggle('is-open');
+        });
     });
-});
 
-document.querySelectorAll('form.lp-form').forEach(function (form) {
-    form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        var response = form.querySelector('.lp-form-response');
-        if (response) {
-            response.classList.add('is-visible');
-        }
-        form.reset();
+    scope.querySelectorAll('form.lp-form').forEach(function (form) {
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var response = form.querySelector('.lp-form-response');
+            if (response) {
+                response.classList.add('is-visible');
+            }
+            form.reset();
+        });
     });
-});
+})();
 </script>
 
 </body>
