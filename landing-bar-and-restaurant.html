@@ -67,6 +67,24 @@
         .lp-form-field label{font-size:1.5rem}
         .lp-delivery-note{font-size:1.4rem;color:var(--c-charcoal);opacity:.7;margin-top:2.4rem;line-height:150%}
 
+        /* Sizes & pricing spec block */
+        .lp-specs{margin-bottom:3.2rem;padding:2.4rem;background:var(--c-porcelain);border-radius:1.2rem}
+        .lp-specs-title{font-size:1.6rem;font-weight:600;color:var(--c-charcoal);margin-bottom:1.6rem;display:block}
+        .lp-specs-list{display:flex;flex-direction:column;gap:1.2rem;margin-bottom:1.6rem}
+        .lp-spec-row{display:flex;align-items:baseline;justify-content:space-between;gap:1.6rem;padding-bottom:1.2rem;border-bottom:1px solid var(--c-oat)}
+        .lp-spec-row:last-child{border-bottom:none;padding-bottom:0}
+        .lp-spec-label{font-size:1.5rem;color:var(--c-charcoal)}
+        .lp-spec-value{font-size:1.5rem;color:var(--c-charcoal);opacity:.7;white-space:nowrap}
+        .lp-spec-row-featured{background:var(--c-almond);margin:0 -1.2rem;padding:1.2rem;border-radius:.8rem;border-bottom:none}
+        .lp-spec-row-featured .lp-spec-label{font-weight:600}
+        .lp-spec-row-featured .lp-spec-value{opacity:1;font-weight:600;font-size:1.8rem;color:#BF5700}
+        .lp-spec-unit{font-size:1.2rem;font-weight:400;color:var(--c-charcoal);opacity:.7}
+        .lp-spec-note{font-size:1.3rem;color:var(--c-charcoal);opacity:.7;line-height:150%}
+        .lp-checkbox-group{display:flex;flex-direction:column;gap:1rem}
+        .lp-checkbox{display:flex;align-items:center;gap:.8rem;font-size:1.5rem;color:var(--c-charcoal);cursor:pointer}
+        .lp-checkbox input{width:1.8rem;height:1.8rem;accent-color:#BF5700;flex-shrink:0}
+        .lp-checkbox .lp-checkbox-price{margin-left:auto;font-weight:600;color:#BF5700}
+
         /* Perfect-for segment list */
         .lp-segments{padding:6rem 4rem;background:var(--c-porcelain)}
         .lp-segments .s-content{margin-bottom:3.2rem;max-width:64rem}
@@ -167,6 +185,25 @@
             </div>
         </div>
 
+        <div class="lp-specs">
+            <span class="lp-specs-title">Sizes &amp; Pricing</span>
+            <div class="lp-specs-list">
+                <div class="lp-spec-row">
+                    <span class="lp-spec-label">Small (below 12&quot; x 12&quot;)</span>
+                    <span class="lp-spec-value">Custom quote</span>
+                </div>
+                <div class="lp-spec-row lp-spec-row-featured">
+                    <span class="lp-spec-label">Medium 12&quot; x 12&quot; x 2.25&quot; (Standard)</span>
+                    <span class="lp-spec-value">$32.99<span class="lp-spec-unit"> / case of 50</span></span>
+                </div>
+                <div class="lp-spec-row">
+                    <span class="lp-spec-label">Large (above 12&quot; x 12&quot;)</span>
+                    <span class="lp-spec-value">Custom quote</span>
+                </div>
+            </div>
+            <p class="lp-spec-note">Sold in cases of 50 boxes &middot; MOQ 284 cases (14,200 boxes)</p>
+        </div>
+
         <form class="lp-form" id="order-request-form">
             <h3 class="s-title lp-form-heading">Request an order</h3>
             <div class="lp-form-row">
@@ -179,25 +216,31 @@
                     <input type="email" id="order-email" name="email" required />
                 </div>
             </div>
-            <div class="lp-form-row">
-                <div class="lp-form-field">
-                    <label for="order-company">Business Name</label>
-                    <input type="text" id="order-company" name="company" />
-                </div>
-                <div class="lp-form-field">
-                    <label for="order-quantity">Estimated Quantity*</label>
-                    <input type="text" id="order-quantity" name="quantity" placeholder="e.g. 500 units / month" required />
+            <div class="lp-form-field">
+                <label for="order-company">Business Name</label>
+                <input type="text" id="order-company" name="company" />
+            </div>
+            <div class="lp-form-field">
+                <label>Select Size(s)*</label>
+                <div class="lp-checkbox-group">
+                    <label class="lp-checkbox"><input type="checkbox" name="size" value="Small" /> Small (below 12&quot; x 12&quot;) <span class="lp-checkbox-price">Custom quote</span></label>
+                    <label class="lp-checkbox"><input type="checkbox" name="size" value="Medium" checked /> Medium 12&quot; x 12&quot; x 2.25&quot; (Standard) <span class="lp-checkbox-price">$32.99 / case of 50</span></label>
+                    <label class="lp-checkbox"><input type="checkbox" name="size" value="Large" /> Large (above 12&quot; x 12&quot;) <span class="lp-checkbox-price">Custom quote</span></label>
                 </div>
             </div>
             <div class="lp-form-field">
+                <label for="order-quantity">Number of Cases*</label>
+                <input type="text" id="order-quantity" name="quantity" placeholder="MOQ 284 cases (50 boxes per case)" required />
+            </div>
+            <div class="lp-form-field">
                 <label for="order-message">Order Details</label>
-                <textarea id="order-message" name="message" placeholder="Print colours, quantity and your delivery timeline in Miami / South Florida"></textarea>
+                <textarea id="order-message" name="message" placeholder="Print colours and your delivery timeline in Miami / South Florida"></textarea>
             </div>
             <button type="submit" aria-label="Request order" class="btn btn-primary btn-m lp-form-submit"><span class="btn-fill"></span><span class="btn-text-wrapper"><span class="btn-text">Request Order</span><span class="btn-text-hover">Request Order</span></span></button>
             <p class="lp-form-response" role="status">Thanks &mdash; your order request has been received. Our team will be in touch shortly to confirm details.</p>
         </form>
 
-        <p class="lp-delivery-note">Serving Miami-Dade, Broward and Palm Beach counties &middot; Bulk tiered pricing available &middot; Fast, reliable turnaround.</p>
+        <p class="lp-delivery-note">Serving Miami-Dade, Broward and Palm Beach counties &middot; Fast, reliable turnaround.</p>
     </div>
 </section>
 
@@ -236,7 +279,7 @@
         <div class="s-blocks">
             <div class="s-block">
                 <div class="s-block-media">
-                    <figure class="media-wrapper image-wrapper responsive"><span class="media-inner image-inner"><img width="1000" height="1500" class="media image" alt="Takeout Goods Packaging kraft paper portion bowl filled with creamy mushroom pasta and rice." src="wp-content/uploads/2025/11/yucca-packaging-for-hot-foods-1.jpg" /></span></figure>
+                    <figure class="media-wrapper image-wrapper responsive"><span class="media-inner image-inner"><img width="1000" height="1500" class="media image" alt="Takeout Goods Packaging one-of-a-kind custom design." src="https://assets.cdn.filesafe.space/cOH08fR6QW6poUYHGCTu/media/6a6f5ad2a4c8a1a2c3068c65.jpg" /></span></figure>
                 </div>
                 <div class="s-block-content">
                     <h3 class="s-title">One-of-a-kind Designs</h3>
@@ -245,7 +288,7 @@
             </div>
             <div class="s-block">
                 <div class="s-block-media">
-                    <figure class="media-wrapper image-wrapper responsive"><span class="media-inner image-inner"><img width="1000" height="1500" class="media image" alt="Takeout Goods Packaging kraft salad bowl and lid packed with a green salad." src="wp-content/uploads/2025/11/yucca-packaging-kraft-salad-bowls-500-750-1000-1300ml-1.jpg" /></span></figure>
+                    <figure class="media-wrapper image-wrapper responsive"><span class="media-inner image-inner"><img width="1000" height="1500" class="media image" alt="Takeout Goods Packaging certified food safe packaging." src="https://assets.cdn.filesafe.space/cOH08fR6QW6poUYHGCTu/media/6a6f5acbcf81b06f05aa249c.jpg" /></span></figure>
                 </div>
                 <div class="s-block-content">
                     <h3 class="s-title">Certified Food Safety</h3>
@@ -254,16 +297,7 @@
             </div>
             <div class="s-block">
                 <div class="s-block-media">
-                    <figure class="media-wrapper image-wrapper responsive"><span class="media-inner image-inner"><img width="1000" height="1500" class="media image" alt="Takeout Goods Packaging 1000ml bagasse sugarcane clamshell packed with wings and chips." src="wp-content/uploads/2025/09/yucca-packaging-compostable-sugarcane-bagasse-cornstarch-food-packaging-min.jpg" /></span></figure>
-                </div>
-                <div class="s-block-content">
-                    <h3 class="s-title">Sustainable Options Available</h3>
-                    <div class="s-text"><p>Find food packaging that aligns with your sustainability goals. You can request recyclable, biodegradable and compostable materials that all perform well.</p></div>
-                </div>
-            </div>
-            <div class="s-block">
-                <div class="s-block-media">
-                    <figure class="media-wrapper image-wrapper responsive"><span class="media-inner image-inner"><img width="1000" height="1500" class="media image" alt="Takeout Goods Packaging kraft soup tub and lids on a white pedestal." src="wp-content/uploads/2025/09/yucca-packaging-for-takeout-catering-events-deli-soup-ramen-stews-min.jpg" /></span></figure>
+                    <figure class="media-wrapper image-wrapper responsive"><span class="media-inner image-inner"><img width="1000" height="1500" class="media image" alt="Takeout Goods Packaging dependable production quality." src="https://assets.cdn.filesafe.space/cOH08fR6QW6poUYHGCTu/media/6a6f5aee32db2dd1575dbc01.jpg" /></span></figure>
                 </div>
                 <div class="s-block-content">
                     <h3 class="s-title">Dependable Quality</h3>
