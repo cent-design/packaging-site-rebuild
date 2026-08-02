@@ -498,22 +498,153 @@ html.lp-skip-intro #lp_pizza_box_miami .lp-intro{display:none !important;}
 <script>
 (function () {
     var scope = document.getElementById('lp_pizza_box_miami') || document;
+
     scope.querySelectorAll('.accordion-header').forEach(function (header) {
         header.addEventListener('click', function () {
             header.closest('.accordion').classList.toggle('is-open');
         });
     });
 
-    scope.querySelectorAll('form.lp-form').forEach(function (form) {
-        form.addEventListener('submit', function (e) {
-            e.preventDefault();
-            var response = form.querySelector('.lp-form-response');
-            if (response) {
-                response.classList.add('is-visible');
-            }
-            form.reset();
+    // Klaviyo Client API — public key is meant to be exposed in browser JS
+    var KLAVIYO_COMPANY_ID = 'Vxn9Fp';
+    var KLAVIYO_LIST_ID = 'SNujFM';
+    var KLAVIYO_REVISION = '2026-07-15';
+    var KLAVIYO_BASE = 'https://a.klaviyo.com/client';
+
+    function klaviyoFetch(path, body) {
+        return fetch(KLAVIYO_BASE + path + '?company_id=' + KLAVIYO_COMPANY_ID, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/vnd.api+json',
+                'revision': KLAVIYO_REVISION
+            },
+            body: JSON.stringify(body)
         });
-    });
+    }
+
+    function subscribeProfile(profileAttributes, source) {
+        return klaviyoFetch('/subscriptions', {
+            data: {
+                type: 'subscription',
+                attributes: {
+                    custom_source: source,
+                    profile: {
+                        data: {
+                            type: 'profile',
+                            attributes: Object.assign({
+                                subscriptions: { email: { marketing: { consent: 'SUBSCRIBED' } } }
+                            }, profileAttributes)
+                        }
+                    }
+                },
+                relationships: {
+                    list: { data: { type: 'list', id: KLAVIYO_LIST_ID } }
+                }
+            }
+        });
+    }
+
+    function trackEvent(email, metricName, properties) {
+        return klaviyoFetch('/events', {
+            data: {
+                type: 'event',
+                attributes: {
+                    properties: properties,
+                    metric: { data: { type: 'metric', attributes: { name: metricName } } },
+                    profile: { data: { type: 'profile', attributes: { email: email } } }
+                }
+            }
+        });
+    }
+
+    function showResponse(form) {
+        var response = form.querySelector('.lp-form-response');
+        if (response) {
+            response.classList.add('is-visible');
+        }
+    }
+
+    var orderForm = scope.querySelector('#order-request-form');
+    if (orderForm) {
+        orderForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var name = orderForm.querySelector('#order-name').value;
+            var email = orderForm.querySelector('#order-email').value;
+            var company = orderForm.querySelector('#order-company').value;
+            var quantity = orderForm.querySelector('#order-quantity').value;
+            var message = orderForm.querySelector('#order-message').value;
+            var sizes = Array.prototype.slice.call(orderForm.querySelectorAll('input[name="size"]:checked')).map(function (cb) { return cb.value; });
+
+            var requests = [
+                subscribeProfile({
+                    email: email,
+                    first_name: name,
+                    properties: { business_name: company }
+                }, 'Pizza Box Landing Page - Order Request'),
+                trackEvent(email, 'Requested Quote', {
+                    name: name,
+                    business_name: company,
+                    sizes_requested: sizes,
+                    number_of_cases: quantity,
+                    order_details: message
+                })
+            ];
+
+            Promise.allSettled(requests).then(function (results) {
+                results.forEach(function (r) {
+                    if (r.status === 'rejected') {
+                        console.error('Klaviyo request failed', r.reason);
+                    }
+                });
+                showResponse(orderForm);
+                orderForm.reset();
+            });
+        });
+    }
+
+    var contactForm = scope.querySelector('#contact-us-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var firstName = contactForm.querySelector('#contact-first-name').value;
+            var lastName = contactForm.querySelector('#contact-last-name').value;
+            var email = contactForm.querySelector('#contact-email').value;
+            var phone = contactForm.querySelector('#contact-number').value;
+            var industry = contactForm.querySelector('#contact-industry').value;
+            var message = contactForm.querySelector('#contact-message').value;
+
+            var profileAttributes = {
+                email: email,
+                first_name: firstName,
+                last_name: lastName,
+                properties: { business_type: industry }
+            };
+            if (phone) {
+                profileAttributes.phone_number = phone;
+            }
+
+            var requests = [
+                subscribeProfile(profileAttributes, 'Pizza Box Landing Page - Contact Form'),
+                trackEvent(email, 'Contact Form Submission', {
+                    first_name: firstName,
+                    last_name: lastName,
+                    phone: phone,
+                    business_type: industry,
+                    message: message
+                })
+            ];
+
+            Promise.allSettled(requests).then(function (results) {
+                results.forEach(function (r) {
+                    if (r.status === 'rejected') {
+                        console.error('Klaviyo request failed', r.reason);
+                    }
+                });
+                showResponse(contactForm);
+                contactForm.reset();
+            });
+        });
+    }
 })();
 </script>
 
