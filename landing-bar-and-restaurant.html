@@ -25,110 +25,95 @@
     <link rel='stylesheet' href='wp-content/themes/yucca/dist/style.css%3Fver=7.0.css' media='all' />
 
     <style>
-        /* Landing-page-only overrides: no mega-menu/full nav on this page, so simplify the header/footer chrome */
-        .lp-header{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:1.6rem 4rem;background:var(--c-porcelain);border-bottom:1px solid var(--c-oat)}
-        .lp-header .h-logo{display:flex;align-items:center;gap:0.8rem;width:auto;height:auto}
-        .lp-header .h-logo svg{width:2.6rem;height:2.6rem;flex-shrink:0}
-        .lp-header .h-logo-text{font-size:1.3rem;font-weight:600;letter-spacing:0.04em;color:var(--c-charcoal);text-transform:uppercase}
-        .lp-footer{padding:3.2rem 4rem;text-align:center;background:var(--c-oat);color:var(--c-charcoal);font-size:1.4rem}
-        .lp-footer a{color:var(--c-charcoal);text-decoration:underline}
-        .lp-footer .lp-footer-links{margin-top:0.8rem}
-        .lp-footer .lp-footer-links a{margin:0 0.8rem}
-        .accordion-body{display:none}
-        .accordion.is-open .accordion-body{display:block}
-        img{max-width:100%;height:auto}
-
-        /* Intro logo-build animation, self-contained (no site JS bundle) */
-        .lp-intro{position:fixed;inset:0;z-index:999;background:#BF5700;display:flex;align-items:center;justify-content:center;animation:lpIntroOut .7s ease-in-out 1.7s forwards}
-        .lp-intro-logo{display:flex;align-items:center;gap:1.4rem}
-        .lp-intro-logo svg{width:6rem;height:6rem;opacity:0;transform:scale(.5);animation:lpIntroIcon .6s cubic-bezier(.34,1.56,.64,1) .2s forwards}
-        .lp-intro-text{opacity:0;transform:translateY(1.2rem);animation:lpIntroText .5s ease-out .55s forwards}
-        .lp-intro-text span{display:block;font-size:2.2rem;font-weight:600;letter-spacing:.08em;color:#fff;text-transform:uppercase;line-height:1.3}
-        @keyframes lpIntroIcon{to{opacity:1;transform:scale(1)}}
-        @keyframes lpIntroText{to{opacity:1;transform:translateY(0)}}
-        @keyframes lpIntroOut{to{opacity:0;visibility:hidden;pointer-events:none}}
-        html.lp-skip-intro .lp-intro{display:none}
-        @media(prefers-reduced-motion: reduce){.lp-intro{animation:lpIntroOut .01s linear .01s forwards}.lp-intro-logo svg,.lp-intro-text{animation:none;opacity:1;transform:none}}
-
-        /* Product-style hero section, patterned after the live product-page layout */
-        .lp-product{display:grid;grid-template-columns:1fr 1fr;gap:4.8rem;max-width:136rem;margin:0 auto;padding:6rem 4rem;align-items:start}
-        .lp-product-media{position:sticky;top:9.6rem;align-self:start;aspect-ratio:1/1;border-radius:1.6rem;overflow:hidden;background:var(--c-almond)}
-        .lp-product-media img{width:100%;height:100%;object-fit:cover;display:block}
-        @media(max-width: 1099px){.lp-product{grid-template-columns:1fr}.lp-product-media{position:static}}
-        .lp-product-content{max-width:60rem}
-        .lp-product-content h1.s-title{font-size:4.4rem;line-height:125%;margin-bottom:1.2rem}
-        @media(max-width: 1099px){.lp-product-content h1.s-title{font-size:2.8rem}}
-        .lp-product-lead{font-size:1.6rem;line-height:160%;color:var(--c-charcoal);margin-bottom:2.4rem}
-        .lp-feature-row{display:flex;gap:2.4rem;margin-bottom:3.2rem;flex-wrap:wrap}
-        .lp-feature{display:flex;flex-direction:column;gap:.8rem;max-width:14rem}
-        .lp-feature-icon{width:3.6rem;height:3.6rem;border-radius:50%;background:var(--c-oat);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-        .lp-feature-title{font-size:1.4rem;font-weight:500;color:var(--c-charcoal);line-height:140%}
-        .lp-form-heading{font-size:2rem;line-height:130%;margin-bottom:.4rem}
-        .lp-form-field label{font-size:1.5rem}
-        .lp-delivery-note{font-size:1.4rem;color:var(--c-charcoal);opacity:.7;margin-top:2.4rem;line-height:150%}
-
-        /* Sizes & pricing spec block */
-        .lp-specs{margin-bottom:3.2rem;padding:2.4rem;background:var(--c-porcelain);border-radius:1.2rem}
-        .lp-specs-title{font-size:1.6rem;font-weight:600;color:var(--c-charcoal);margin-bottom:1.6rem;display:block}
-        .lp-specs-list{display:flex;flex-direction:column;gap:1.2rem;margin-bottom:1.6rem}
-        .lp-spec-row{display:flex;align-items:baseline;justify-content:space-between;gap:1.6rem;padding-bottom:1.2rem;border-bottom:1px solid var(--c-oat)}
-        .lp-spec-row:last-child{border-bottom:none;padding-bottom:0}
-        .lp-spec-label{font-size:1.5rem;color:var(--c-charcoal)}
-        .lp-spec-value{font-size:1.5rem;color:var(--c-charcoal);opacity:.7;white-space:nowrap}
-        .lp-spec-row-featured{background:var(--c-almond);margin:0 -1.2rem;padding:1.2rem;border-radius:.8rem;border-bottom:none}
-        .lp-spec-row-featured .lp-spec-label{font-weight:600}
-        .lp-spec-row-featured .lp-spec-value{opacity:1;font-weight:600;font-size:1.8rem;color:#BF5700}
-        .lp-spec-unit{font-size:1.2rem;font-weight:400;color:var(--c-charcoal);opacity:.7}
-        .lp-spec-note{font-size:1.3rem;color:var(--c-charcoal);opacity:.7;line-height:150%}
-        .lp-checkbox-group{display:flex;flex-direction:column;gap:1rem}
-        .lp-checkbox{display:flex;align-items:center;gap:.8rem;font-size:1.5rem;color:var(--c-charcoal);cursor:pointer}
-        .lp-checkbox input{width:1.8rem;height:1.8rem;accent-color:#BF5700;flex-shrink:0}
-        .lp-checkbox .lp-checkbox-price{margin-left:auto;font-weight:600;color:#BF5700}
-
-        /* Perfect-for segment list */
-        .lp-segments{padding:6rem 4rem;background:var(--c-porcelain)}
-        .lp-segments .s-content{margin-bottom:3.2rem;max-width:64rem}
-        .lp-segments-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:2.4rem}
-        @media(max-width: 1099px){.lp-segments-grid{grid-template-columns:1fr 1fr}}
-        .lp-segment{padding:2.4rem;background:var(--c-almond);border-radius:1.2rem}
-        .lp-segment-title{display:block;font-size:1.6rem;font-weight:600;color:var(--c-charcoal);margin-bottom:.6rem}
-        .lp-segment-text{font-size:1.4rem;line-height:150%;color:var(--c-charcoal);opacity:.8}
-
-        /* Custom Solutions CTA */
-        .lp-cta-custom{padding:8rem 0;background:#BF5700;text-align:center}
-        .lp-cta-custom .s-content{padding:0 4rem}
-        .lp-cta-custom .s-overline{display:block;font-size:1.3rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.2rem;color:#fff;opacity:.85}
-        .lp-cta-custom h2{font-size:3.6rem;line-height:130%;max-width:64rem;margin:0 auto 3.2rem;color:#fff}
-
-        /* Scrolling marquee band, self-contained CSS loop (no site JS bundle) */
-        .lp-marquee-link{display:block;margin-top:5.6rem;text-decoration:none}
-        .lp-marquee{overflow:hidden;white-space:nowrap;border-top:1px solid rgba(255,255,255,.35);border-bottom:1px solid rgba(255,255,255,.35);padding:2.4rem 0}
-        .lp-marquee-track{display:inline-flex;width:max-content;animation:lpMarqueeScroll 22s linear infinite}
-        .lp-marquee-item{display:inline-flex;align-items:center;gap:2rem;padding:0 2rem;font-size:3.2rem;color:#fff;flex-shrink:0}
-        .lp-marquee-item svg{flex-shrink:0}
-        @keyframes lpMarqueeScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-        @media(max-width: 1099px){.lp-marquee-item{font-size:2rem}}
-        @media(prefers-reduced-motion: reduce){.lp-marquee-track{animation:none}}
-
-        /* Order-request / contact forms */
-        .lp-form-section{padding:6rem 4rem}
-        .lp-form-section .s-content{margin-bottom:3.2rem;max-width:64rem}
-        .lp-contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4.8rem;max-width:136rem;margin:0 auto;align-items:start}
-        @media(max-width: 1099px){.lp-contact-grid{grid-template-columns:1fr}}
-        .lp-contact-intro h2.s-title{font-size:3.6rem;line-height:125%;margin-bottom:1.6rem}
-        .lp-contact-intro .s-text{font-size:1.6rem;line-height:160%;color:var(--c-charcoal);margin-bottom:2.4rem}
-        .lp-form{display:flex;flex-direction:column;gap:1.6rem;max-width:64rem}
-        .lp-form-row{display:flex;gap:1.6rem;flex-wrap:wrap}
-        .lp-form-field{flex:1 1 20rem;display:flex;flex-direction:column;gap:.6rem}
-        .lp-form-field label{font-size:1.3rem;font-weight:500;color:var(--c-charcoal)}
-        .lp-form-field input,.lp-form-field select,.lp-form-field textarea{font-family:inherit;font-size:1.5rem;padding:1.2rem 1.6rem;border:1px solid var(--c-oat);border-radius:.8rem;background:var(--c-porcelain);color:var(--c-charcoal)}
-        .lp-form-field input:focus,.lp-form-field select:focus,.lp-form-field textarea:focus{outline:none;border-color:#BF5700}
-        .lp-form-field textarea{resize:vertical;min-height:11rem}
-        .lp-form-submit{align-self:flex-start;margin-top:.8rem}
-        .lp-form-response{display:none;margin-top:1.6rem;padding:1.4rem 2rem;border-radius:.8rem;background:var(--c-oat);color:var(--c-charcoal);font-size:1.4rem}
-        .lp-form-response.is-visible{display:block}
-        .lp-contact{background:var(--c-porcelain)}
-    </style>
+#lp_pizza_box_miami .lp-header{position:sticky !important;top:0 !important;z-index:20 !important;display:flex !important;align-items:center !important;justify-content:space-between !important;padding:1.6rem 4rem !important;background:var(--c-porcelain) !important;border-bottom:1px solid var(--c-oat) !important;}
+#lp_pizza_box_miami .lp-header .h-logo{display:flex !important;align-items:center !important;gap:0.8rem !important;width:auto !important;height:auto !important;}
+#lp_pizza_box_miami .lp-header .h-logo svg{width:2.6rem !important;height:2.6rem !important;flex-shrink:0 !important;}
+#lp_pizza_box_miami .lp-header .h-logo-text{font-size:1.3rem !important;font-weight:600 !important;letter-spacing:0.04em !important;color:var(--c-charcoal) !important;text-transform:uppercase !important;}
+#lp_pizza_box_miami .lp-footer{padding:3.2rem 4rem !important;text-align:center !important;background:var(--c-oat) !important;color:var(--c-charcoal) !important;font-size:1.4rem !important;}
+#lp_pizza_box_miami .lp-footer a{color:var(--c-charcoal) !important;text-decoration:underline !important;}
+#lp_pizza_box_miami .lp-footer .lp-footer-links{margin-top:0.8rem !important;}
+#lp_pizza_box_miami .lp-footer .lp-footer-links a{margin:0 0.8rem !important;}
+#lp_pizza_box_miami .accordion-body{display:none !important;}
+#lp_pizza_box_miami .accordion.is-open .accordion-body{display:block !important;}
+#lp_pizza_box_miami img{max-width:100% !important;height:auto !important;}
+#lp_pizza_box_miami .lp-intro{position:fixed !important;inset:0 !important;z-index:999 !important;background:#BF5700 !important;display:flex !important;align-items:center !important;justify-content:center !important;animation:lpIntroOut .7s ease-in-out 1.7s forwards !important;}
+#lp_pizza_box_miami .lp-intro-logo{display:flex !important;align-items:center !important;gap:1.4rem !important;}
+#lp_pizza_box_miami .lp-intro-logo svg{width:6rem !important;height:6rem !important;opacity:0 !important;transform:scale(.5) !important;animation:lpIntroIcon .6s cubic-bezier(.34,1.56,.64,1) .2s forwards !important;}
+#lp_pizza_box_miami .lp-intro-text{opacity:0 !important;transform:translateY(1.2rem) !important;animation:lpIntroText .5s ease-out .55s forwards !important;}
+#lp_pizza_box_miami .lp-intro-text span{display:block !important;font-size:2.2rem !important;font-weight:600 !important;letter-spacing:.08em !important;color:#fff !important;text-transform:uppercase !important;line-height:1.3 !important;}
+@keyframes lpIntroIcon{to{opacity:1 !important;transform:scale(1) !important;}}
+@keyframes lpIntroText{to{opacity:1 !important;transform:translateY(0) !important;}}
+@keyframes lpIntroOut{to{opacity:0 !important;visibility:hidden !important;pointer-events:none !important;}}
+html.lp-skip-intro #lp_pizza_box_miami .lp-intro{display:none !important;}
+@media(prefers-reduced-motion: reduce){#lp_pizza_box_miami .lp-intro{animation:lpIntroOut .01s linear .01s forwards !important;}#lp_pizza_box_miami .lp-intro-logo svg,#lp_pizza_box_miami .lp-intro-text{animation:none !important;opacity:1 !important;transform:none !important;}}
+#lp_pizza_box_miami .lp-product{display:grid !important;grid-template-columns:1fr 1fr !important;gap:4.8rem !important;max-width:136rem !important;margin:0 auto !important;padding:6rem 4rem !important;align-items:start !important;}
+#lp_pizza_box_miami .lp-product-media{position:sticky !important;top:9.6rem !important;align-self:start !important;aspect-ratio:1/1 !important;border-radius:1.6rem !important;overflow:hidden !important;background:var(--c-almond) !important;}
+#lp_pizza_box_miami .lp-product-media img{width:100% !important;height:100% !important;object-fit:cover !important;display:block !important;}
+@media(max-width: 1099px){#lp_pizza_box_miami .lp-product{grid-template-columns:1fr !important;}#lp_pizza_box_miami .lp-product-media{position:static !important;}}
+#lp_pizza_box_miami .lp-product-content{max-width:60rem !important;}
+#lp_pizza_box_miami .lp-product-content h1.s-title{font-size:4.4rem !important;line-height:125% !important;margin-bottom:1.2rem !important;}
+@media(max-width: 1099px){#lp_pizza_box_miami .lp-product-content h1.s-title{font-size:2.8rem !important;}}
+#lp_pizza_box_miami .lp-product-lead{font-size:1.6rem !important;line-height:160% !important;color:var(--c-charcoal) !important;margin-bottom:2.4rem !important;}
+#lp_pizza_box_miami .lp-feature-row{display:flex !important;gap:2.4rem !important;margin-bottom:3.2rem !important;flex-wrap:wrap !important;}
+#lp_pizza_box_miami .lp-feature{display:flex !important;flex-direction:column !important;gap:.8rem !important;max-width:14rem !important;}
+#lp_pizza_box_miami .lp-feature-icon{width:3.6rem !important;height:3.6rem !important;border-radius:50% !important;background:var(--c-oat) !important;display:flex !important;align-items:center !important;justify-content:center !important;flex-shrink:0 !important;}
+#lp_pizza_box_miami .lp-feature-title{font-size:1.4rem !important;font-weight:500 !important;color:var(--c-charcoal) !important;line-height:140% !important;}
+#lp_pizza_box_miami .lp-form-heading{font-size:2rem !important;line-height:130% !important;margin-bottom:.4rem !important;}
+#lp_pizza_box_miami .lp-form-field label{font-size:1.5rem !important;}
+#lp_pizza_box_miami .lp-delivery-note{font-size:1.4rem !important;color:var(--c-charcoal) !important;opacity:.7 !important;margin-top:2.4rem !important;line-height:150% !important;}
+#lp_pizza_box_miami .lp-specs{margin-bottom:3.2rem !important;padding:2.4rem !important;background:var(--c-porcelain) !important;border-radius:1.2rem !important;}
+#lp_pizza_box_miami .lp-specs-title{font-size:1.6rem !important;font-weight:600 !important;color:var(--c-charcoal) !important;margin-bottom:1.6rem !important;display:block !important;}
+#lp_pizza_box_miami .lp-specs-list{display:flex !important;flex-direction:column !important;gap:1.2rem !important;margin-bottom:1.6rem !important;}
+#lp_pizza_box_miami .lp-spec-row{display:flex !important;align-items:baseline !important;justify-content:space-between !important;gap:1.6rem !important;padding-bottom:1.2rem !important;border-bottom:1px solid var(--c-oat) !important;}
+#lp_pizza_box_miami .lp-spec-row:last-child{border-bottom:none !important;padding-bottom:0 !important;}
+#lp_pizza_box_miami .lp-spec-label{font-size:1.5rem !important;color:var(--c-charcoal) !important;}
+#lp_pizza_box_miami .lp-spec-value{font-size:1.5rem !important;color:var(--c-charcoal) !important;opacity:.7 !important;white-space:nowrap !important;}
+#lp_pizza_box_miami .lp-spec-row-featured{background:var(--c-almond) !important;margin:0 -1.2rem !important;padding:1.2rem !important;border-radius:.8rem !important;border-bottom:none !important;}
+#lp_pizza_box_miami .lp-spec-row-featured .lp-spec-label{font-weight:600 !important;}
+#lp_pizza_box_miami .lp-spec-row-featured .lp-spec-value{opacity:1 !important;font-weight:600 !important;font-size:1.8rem !important;color:#BF5700 !important;}
+#lp_pizza_box_miami .lp-spec-unit{font-size:1.2rem !important;font-weight:400 !important;color:var(--c-charcoal) !important;opacity:.7 !important;}
+#lp_pizza_box_miami .lp-spec-note{font-size:1.3rem !important;color:var(--c-charcoal) !important;opacity:.7 !important;line-height:150% !important;}
+#lp_pizza_box_miami .lp-checkbox-group{display:flex !important;flex-direction:column !important;gap:1rem !important;}
+#lp_pizza_box_miami .lp-checkbox{display:flex !important;align-items:center !important;gap:.8rem !important;font-size:1.5rem !important;color:var(--c-charcoal) !important;cursor:pointer !important;}
+#lp_pizza_box_miami .lp-checkbox input{width:1.8rem !important;height:1.8rem !important;accent-color:#BF5700 !important;flex-shrink:0 !important;}
+#lp_pizza_box_miami .lp-checkbox .lp-checkbox-price{margin-left:auto !important;font-weight:600 !important;color:#BF5700 !important;}
+#lp_pizza_box_miami .lp-segments{padding:6rem 4rem !important;background:var(--c-porcelain) !important;}
+#lp_pizza_box_miami .lp-segments .s-content{margin-bottom:3.2rem !important;max-width:64rem !important;}
+#lp_pizza_box_miami .lp-segments-grid{display:grid !important;grid-template-columns:repeat(3, 1fr) !important;gap:2.4rem !important;}
+@media(max-width: 1099px){#lp_pizza_box_miami .lp-segments-grid{grid-template-columns:1fr 1fr !important;}}
+#lp_pizza_box_miami .lp-segment{padding:2.4rem !important;background:var(--c-almond) !important;border-radius:1.2rem !important;}
+#lp_pizza_box_miami .lp-segment-title{display:block !important;font-size:1.6rem !important;font-weight:600 !important;color:var(--c-charcoal) !important;margin-bottom:.6rem !important;}
+#lp_pizza_box_miami .lp-segment-text{font-size:1.4rem !important;line-height:150% !important;color:var(--c-charcoal) !important;opacity:.8 !important;}
+#lp_pizza_box_miami .lp-cta-custom{padding:8rem 0 !important;background:#BF5700 !important;text-align:center !important;}
+#lp_pizza_box_miami .lp-cta-custom .s-content{padding:0 4rem !important;}
+#lp_pizza_box_miami .lp-cta-custom .s-overline{display:block !important;font-size:1.3rem !important;letter-spacing:.08em !important;text-transform:uppercase !important;margin-bottom:1.2rem !important;color:#fff !important;opacity:.85 !important;}
+#lp_pizza_box_miami .lp-cta-custom h2{font-size:3.6rem !important;line-height:130% !important;max-width:64rem !important;margin:0 auto 3.2rem !important;color:#fff !important;}
+#lp_pizza_box_miami .lp-marquee-link{display:block !important;margin-top:5.6rem !important;text-decoration:none !important;}
+#lp_pizza_box_miami .lp-marquee{overflow:hidden !important;white-space:nowrap !important;border-top:1px solid rgba(255,255,255,.35) !important;border-bottom:1px solid rgba(255,255,255,.35) !important;padding:2.4rem 0 !important;}
+#lp_pizza_box_miami .lp-marquee-track{display:inline-flex !important;width:max-content !important;animation:lpMarqueeScroll 22s linear infinite !important;}
+#lp_pizza_box_miami .lp-marquee-item{display:inline-flex !important;align-items:center !important;gap:2rem !important;padding:0 2rem !important;font-size:3.2rem !important;color:#fff !important;flex-shrink:0 !important;}
+#lp_pizza_box_miami .lp-marquee-item svg{flex-shrink:0 !important;}
+@keyframes lpMarqueeScroll{from{transform:translateX(0) !important;}to{transform:translateX(-50%) !important;}}
+@media(max-width: 1099px){#lp_pizza_box_miami .lp-marquee-item{font-size:2rem !important;}}
+@media(prefers-reduced-motion: reduce){#lp_pizza_box_miami .lp-marquee-track{animation:none !important;}}
+#lp_pizza_box_miami .lp-form-section{padding:6rem 4rem !important;}
+#lp_pizza_box_miami .lp-form-section .s-content{margin-bottom:3.2rem !important;max-width:64rem !important;}
+#lp_pizza_box_miami .lp-contact-grid{display:grid !important;grid-template-columns:1fr 1fr !important;gap:4.8rem !important;max-width:136rem !important;margin:0 auto !important;align-items:start !important;}
+@media(max-width: 1099px){#lp_pizza_box_miami .lp-contact-grid{grid-template-columns:1fr !important;}}
+#lp_pizza_box_miami .lp-contact-intro h2.s-title{font-size:3.6rem !important;line-height:125% !important;margin-bottom:1.6rem !important;}
+#lp_pizza_box_miami .lp-contact-intro .s-text{font-size:1.6rem !important;line-height:160% !important;color:var(--c-charcoal) !important;margin-bottom:2.4rem !important;}
+#lp_pizza_box_miami .lp-form{display:flex !important;flex-direction:column !important;gap:1.6rem !important;max-width:64rem !important;}
+#lp_pizza_box_miami .lp-form-row{display:flex !important;gap:1.6rem !important;flex-wrap:wrap !important;}
+#lp_pizza_box_miami .lp-form-field{flex:1 1 20rem !important;display:flex !important;flex-direction:column !important;gap:.6rem !important;}
+#lp_pizza_box_miami .lp-form-field label{font-size:1.3rem !important;font-weight:500 !important;color:var(--c-charcoal) !important;}
+#lp_pizza_box_miami .lp-form-field input,#lp_pizza_box_miami .lp-form-field select,#lp_pizza_box_miami .lp-form-field textarea{font-family:inherit !important;font-size:1.5rem !important;padding:1.2rem 1.6rem !important;border:1px solid var(--c-oat) !important;border-radius:.8rem !important;background:var(--c-porcelain) !important;color:var(--c-charcoal) !important;}
+#lp_pizza_box_miami .lp-form-field input:focus,#lp_pizza_box_miami .lp-form-field select:focus,#lp_pizza_box_miami .lp-form-field textarea:focus{outline:none !important;border-color:#BF5700 !important;}
+#lp_pizza_box_miami .lp-form-field textarea{resize:vertical !important;min-height:11rem !important;}
+#lp_pizza_box_miami .lp-form-submit{align-self:flex-start !important;margin-top:.8rem !important;}
+#lp_pizza_box_miami .lp-form-response{display:none !important;margin-top:1.6rem !important;padding:1.4rem 2rem !important;border-radius:.8rem !important;background:var(--c-oat) !important;color:var(--c-charcoal) !important;font-size:1.4rem !important;}
+#lp_pizza_box_miami .lp-form-response.is-visible{display:block !important;}
+#lp_pizza_box_miami .lp-contact{background:var(--c-porcelain) !important;}
+</style>
 </head>
 <body class="page landing-page" id="lp_pizza_box_miami">
 
@@ -154,7 +139,7 @@
     <a aria-label="Request a quote" href="#order-request-form" class="btn btn-primary btn-s"><span class="btn-fill"></span><span class="btn-text-wrapper"><span class="btn-text">Request a Quote</span><span class="btn-text-hover">Request a Quote</span></span></a>
 </header>
 
-<main id="lp_pizza_box_miami" class="main">
+<main class="main">
 
 <section class="lp-product">
     <div class="lp-product-media">
