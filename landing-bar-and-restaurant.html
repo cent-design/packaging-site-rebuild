@@ -51,11 +51,11 @@
         @media(prefers-reduced-motion: reduce){.lp-intro{animation:lpIntroOut .01s linear .01s forwards}.lp-intro-logo svg,.lp-intro-text{animation:none;opacity:1;transform:none}}
 
         /* Product-style hero section, patterned after the live product-page layout */
-        .lp-product{display:grid;grid-template-columns:minmax(0,56rem) minmax(0,56rem);gap:4.8rem;padding:6rem 4rem;align-items:start}
+        .lp-product{display:grid;grid-template-columns:1fr 1fr;gap:4.8rem;max-width:136rem;margin:0 auto;padding:6rem 4rem;align-items:start}
         .lp-product-media{position:sticky;top:9.6rem;align-self:start;aspect-ratio:1/1;border-radius:1.6rem;overflow:hidden;background:var(--c-almond)}
         .lp-product-media img{width:100%;height:100%;object-fit:cover;display:block}
         @media(max-width: 1099px){.lp-product{grid-template-columns:1fr}.lp-product-media{position:static}}
-        .lp-product-content{max-width:56rem}
+        .lp-product-content{max-width:60rem}
         .lp-product-content h1.s-title{font-size:4.4rem;line-height:125%;margin-bottom:1.2rem}
         @media(max-width: 1099px){.lp-product-content h1.s-title{font-size:2.8rem}}
         .lp-product-lead{font-size:1.6rem;line-height:160%;color:var(--c-charcoal);margin-bottom:2.4rem}
@@ -129,7 +129,7 @@
         <span class="h-logo-text">Takeout Goods</span>
     </a>
 
-    <a aria-label="Request a quote" href="#order-request-form" class="btn btn-primary btn-s"><span class="btn-fill"></span><span class="btn-text-wrapper"><span class="btn-text">Request a Quote</span></span></a>
+    <a aria-label="Request a quote" href="#order-request-form" class="btn btn-primary btn-s"><span class="btn-fill"></span><span class="btn-text-wrapper"><span class="btn-text">Request a Quote</span><span class="btn-text-hover">Request a Quote</span></span></a>
 </header>
 
 <main id="lp_pizza_box_miami" class="main">
@@ -189,7 +189,7 @@
                 <label for="order-message">Order Details</label>
                 <textarea id="order-message" name="message" placeholder="Print colours, quantity and your delivery timeline in Miami / South Florida"></textarea>
             </div>
-            <button type="submit" aria-label="Request order" class="btn btn-primary btn-m lp-form-submit"><span class="btn-fill"></span><span class="btn-text-wrapper"><span class="btn-text">Request Order</span></span></button>
+            <button type="submit" aria-label="Request order" class="btn btn-primary btn-m lp-form-submit"><span class="btn-fill"></span><span class="btn-text-wrapper"><span class="btn-text">Request Order</span><span class="btn-text-hover">Request Order</span></span></button>
             <p class="lp-form-response" role="status">Thanks &mdash; your order request has been received. Our team will be in touch shortly to confirm details.</p>
         </form>
 
@@ -274,7 +274,7 @@
     <div class="s-content">
         <span class="s-overline">Custom Solutions</span>
         <h2>Brands that thrive invest in custom-designed packaging. Let us help bring your vision to life.</h2>
-        <a aria-label="Enquire now" href="#contact-form" class="btn btn-light btn-s"><span class="btn-fill"></span><span class="btn-text-wrapper"><span class="btn-text">Enquire Now</span></span></a>
+        <a aria-label="Enquire now" href="#contact-form" class="btn btn-light btn-s"><span class="btn-fill"></span><span class="btn-text-wrapper"><span class="btn-text">Enquire Now</span><span class="btn-text-hover">Enquire Now</span></span></a>
     </div>
 
     <a href="#contact-form" aria-label="Enquire now" class="lp-marquee-link">
@@ -321,7 +321,7 @@
     <div class="s-inner">
         <div class="s-content">
             <h2 class="s-title">Our Process</h2>
-            <a aria-label="Explore Custom Solutions" href="custom-solutions.html" class="btn btn-light btn-s" target="_self"><span class="btn-fill"></span><span class="btn-text-wrapper"><span class="btn-text">Explore Custom Solutions</span></span></a>
+            <a aria-label="Explore Custom Solutions" href="custom-solutions.html" class="btn btn-light btn-s" target="_self"><span class="btn-fill"></span><span class="btn-text-wrapper"><span class="btn-text">Explore Custom Solutions</span><span class="btn-text-hover">Explore Custom Solutions</span></span></a>
         </div>
 
         <div class="s-steps">
@@ -453,7 +453,7 @@
             <label for="contact-message">Message*</label>
             <textarea id="contact-message" name="message" required placeholder="Tell us what you're looking for"></textarea>
         </div>
-        <button type="submit" aria-label="Submit enquiry" class="btn btn-primary btn-m lp-form-submit"><span class="btn-fill"></span><span class="btn-text-wrapper"><span class="btn-text">Submit Enquiry</span></span></button>
+        <button type="submit" aria-label="Submit enquiry" class="btn btn-primary btn-m lp-form-submit"><span class="btn-fill"></span><span class="btn-text-wrapper"><span class="btn-text">Submit Enquiry</span><span class="btn-text-hover">Submit Enquiry</span></span></button>
         <p class="lp-form-response" role="status">Thanks for reaching out &mdash; we&rsquo;ve received your message and will get back to you shortly.</p>
     </form>
 </section>
@@ -462,7 +462,7 @@
     <div class="s-inner">
         <div class="s-content">
             <h2 class="s-title">Ready to brand your pizza boxes in Miami?</h2>
-            <a aria-label="Request a quote" href="#order-request-form" class="btn btn-primary btn-s"><span class="btn-fill"></span><span class="btn-text-wrapper"><span class="btn-text">Request a Quote</span></span></a>
+            <a aria-label="Request a quote" href="#order-request-form" class="btn btn-primary btn-s"><span class="btn-fill"></span><span class="btn-text-wrapper"><span class="btn-text">Request a Quote</span><span class="btn-text-hover">Request a Quote</span></span></a>
         </div>
     </div>
 </section>
